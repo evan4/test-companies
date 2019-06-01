@@ -3,15 +3,15 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Company::class, function (Faker $faker) {
-    static $password;
 
-    $name = $faker->Company();
+    $name = $faker->unique()->Company();
+    $slug =  str_slug($name);
 
     return [
         'name' => $name,
-        'slug' => str_slug($name),
+        'slug' =>  $slug,
         'description' => $faker->text(300),
-        'email' => $faker->unique()->companyEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'email' => $slug . '@gmail.com',
+        'password' => bcrypt('secret'),
     ];
 });
