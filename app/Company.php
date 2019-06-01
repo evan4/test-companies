@@ -6,5 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'image', 'description', 'email', 'password',
+    ];
+
+    public function employees()
+    {
+        return $this->hasmany(Employee::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasmany(Comment::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }
