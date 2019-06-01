@@ -12,7 +12,7 @@ class PositionsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Position::class, 10)->create()->each(function ($u) {
-            $u->save(factory(App\Employee::class)->make());
+            $u->save();
         });
     }
 }
