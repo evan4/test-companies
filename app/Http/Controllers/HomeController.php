@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $companoes = new Company();
-        return view('home', compact('companoes'));
+        
+        return view('home');
     }
 }

@@ -15,12 +15,12 @@ class Employee extends Model
         'name',  'position_id', 'salary',
     ];
 
-    public function companies()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function positions()
+    public function position()
     {
         return $this->belongsTo(Position::class);
     }

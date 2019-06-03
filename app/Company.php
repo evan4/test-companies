@@ -15,6 +15,15 @@ class Company extends Model
         'name', 'slug', 'image', 'description', 'email', 'password',
     ];
 
+     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+    ];
+
     public function employees()
     {
         return $this->hasmany(Employee::class);
@@ -30,4 +39,8 @@ class Company extends Model
         return 'slug';
     }
 
+    public function getUrlAttribute()
+    {
+        return route('companies.show', $this->slug);
+    }
 }

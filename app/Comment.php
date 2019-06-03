@@ -15,7 +15,7 @@ class Comment extends Model
         'body',  'company_id',
     ];
 
-    public function companies()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }
