@@ -11,10 +11,14 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Company::class, 10)->create()->each(function ($u) {
-            $u->saveMany(
-                factory(App\Employee::class, 10)->make(),
-                factory(App\Comment::class, 10)->make()
+        factory(App\Company::class, 5)->create()->each(function ($u) 
+        {
+            $u->employees()
+            ->saveMany(
+                factory(App\Employee::class, rand(1,5))->make()
+            );
+            $u->comments()->saveMany(
+                factory(App\Comment::class, rand(1,5))->make()
             );
         });
     }

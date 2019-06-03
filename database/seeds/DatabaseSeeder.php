@@ -11,11 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(
+        $this->call([
             PositionsTableSeeder::class,
             CompaniesTableSeeder::class,
-            CommentsTableSeeder::class,
-            EmployeesTableSeeder::class
-        );
+        ]);
     }
 }
