@@ -16,7 +16,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::with('employees')->latest()->paginate(5);
        
         return view('companies.index', compact('companies'));
     }
@@ -31,7 +31,8 @@ class CompanyController extends Controller
     {
         $company_id = $company->id;
 
-        $emploees = Employee::with('position')->where('company_id', $company_id)->get();
+        $emploees = Employee::with('position')->where('company_id', $company_id)
+            ->latest()->paginate(5);
 
         $comments = Comment::with('company')->where('company_id', $company_id)
             ->latest()->get();

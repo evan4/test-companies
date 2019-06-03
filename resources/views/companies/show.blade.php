@@ -4,7 +4,8 @@
 <div class="container">
     
     <h1 class="text-center">{{ $company->name }}</h1>
-    <div>
+    <p>Число сотрудников {{$company->employees->count()}}</p>
+    <div class="mb-2">
         Email: <a href="mailto:{{$company->email}}">{{$company->email}}</a>
         @if($company->image)
             <img class="float-right img-thumbnail"
@@ -16,11 +17,11 @@
         <p>Описание</p>
         {{$company->description}}
     </div>
-    <h2 class="mt-2">Список сотрудников компании </h2>
+    <h2 class="mt-2">Список сотрудников</h2>
     <table class="table table-hover">
         <thead>
             <tr>
-            <th scope="col">имя</th>
+            <th scope="col">Имя</th>
             <th scope="col">Должность</th>
             <th scope="col">Зарплата</th>
             </tr>
@@ -30,11 +31,14 @@
                 <tr>
                     <td class="w-33">{{ $emploee->name }}</td>
                     <td class="w-33">{{ $emploee->position->name }}</td>
-                    <td class="w-33">{{ $emploee->salary }}</td>
+                    <td class="w-33">${{ $emploee->salary }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    {{ $emploees->links() }}
+
     @if($comments)
     <h3>Комментарии</h3>
     <ul>
