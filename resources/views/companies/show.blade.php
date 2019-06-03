@@ -39,16 +39,18 @@
 
     {{ $emploees->links() }}
 
-    @if($comments)
-    <h3>Комментарии</h3>
-    <ul>
-        @foreach($comments as $comment)
-        <li class="mt-2">
-            <p>{{$comment->company->name}}</p>
-            {{$comment->body}}
-        </li>
-        @endforeach
-    </ul>
-    @endif
+    @auth
+        @if($comments)
+        <h3>Комментарии</h3>
+        <ul>
+            @foreach($comments as $comment)
+            <li class="mt-2">
+                <p>{{$comment->company->name}}</p>
+                {{$comment->body}}
+            </li>
+            @endforeach
+        </ul>
+        @endif
+    @endguest
 </div>
 @endsection

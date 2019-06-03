@@ -43,4 +43,6 @@ class Company extends Model
     {
         return route('companies.show', $this->slug);
     }
+
+
 }
