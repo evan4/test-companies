@@ -13,8 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', 'CompanyController@index');
+Route::get('/', 'CompanyController@index')->name('companies.index');
 
-Route::get('/{company}', 'CompanyController@show')->name('companies.show');
+Route::get('/company/{company}', 'CompanyController@show')->name('companies.show');
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

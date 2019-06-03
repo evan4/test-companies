@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->text('description');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
