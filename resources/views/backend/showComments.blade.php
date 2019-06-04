@@ -11,9 +11,9 @@
         
         <h2 class="mt-2">Отзывы о компании</h2>
        
-        <ul>
+        <ul class="list-group">
             @foreach($comments as $comment)
-            <li class="mt-2">
+            <li class="list-group-item">
                 <p>{{$comment->company->name}}</p>
                 {{$comment->body}}
             </li>

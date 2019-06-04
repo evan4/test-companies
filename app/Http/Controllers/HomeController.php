@@ -33,6 +33,8 @@ class HomeController extends Controller
 
     public function editCompany(Company $company)
     {
+        $company = Company::find(\Auth::id());
+        
         return view('backend.edit', compact('company'));
     }
 

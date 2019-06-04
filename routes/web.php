@@ -35,6 +35,12 @@ Route::group(array('prefix' => 'admin'), function(){
         'uses' => 'HomeController@showComments'
     ]);
 
+    Route::post('/comment-create', [
+        'as' => 'comment-create', 
+        'uses' => 'CommentController@store'
+    ]);
+    
+
     Route::get('/deleteCompany', [
         'as' => 'deleteCompany', 
         'uses' => 'HomeController@deleteCompany'
