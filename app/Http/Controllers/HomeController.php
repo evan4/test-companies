@@ -63,13 +63,4 @@ class HomeController extends Controller
         return view('backend.showComments', compact('company', 'comments') );
     }
 
-    public function deleteCompany()
-    {
-        $company = Company::findOrFail(\Auth::id());
-        
-        $company->delete();
-        \Auth::logout();
-        return redirect('/login');
-    }
-
 }

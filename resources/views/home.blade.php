@@ -19,8 +19,8 @@
             <div class="mb-2">
                 Email: <a href="mailto:{{$company->email}}">{{$company->email}}</a>
                 @if($company->image)
-                    <img class="float-right img-thumbnail"
-                        src="{{$company->image}}" 
+                    <img class="float-right img-thumbnail company-image"
+                        src="{{$company->image_url}}" 
                         alt="{{ $company->name }}">
                 @endif
             </div>

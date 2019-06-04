@@ -4,9 +4,9 @@
 <div class="container">
     
     <h1 class="text-center" id="company-name">{{ $company->name }}</h1>
-    <p>Число сотрудников {{$company->employees->count()}}</p>
+    <p><strong>Число сотрудников</strong> {{$company->employees->count()}}</p>
     <div class="mb-2">
-        Email: <a href="mailto:{{$company->email}}">{{$company->email}}</a>
+        <strong>Email:</strong> <a href="mailto:{{$company->email}}">{{$company->email}}</a>
         @if($company->image)
             <img class="float-right img-thumbnail"
                 src="{{$company->image}}" 
@@ -14,8 +14,8 @@
         @endif
     </div>
     <div>
-        <p>Описание</p>
-        {{$company->description}}
+        <p class="font-weight-bold">Описание</p>
+        <div>{{$company->description}}</div>
     </div>
     <h2 class="mt-2">Список сотрудников</h2>
     <table class="table table-hover">

@@ -1,12 +1,21 @@
-const alertResult = $('#alert-company');
+const alertResult = $('#alert-photo');
 
-$('#company-update').on('submit', function (e) {
+$('#post-form').on('submit', function (e) {
     e.preventDefault();
 
+    let data = new FormData();
+    data.append('image', $('#image')[0].files[0]);
+    console.log(data);
+    
     $.ajax({
-        url: '/admin/company-update',
+        url: '/admin/company-updatePhoto',
         method: "POST",
-        data: $(this).serializeArray()
+        contentType: false,
+        processData: false,
+        data,
+        headers: {
+            'X-CSRF-TOKEN': $("input[name='_token']").val()
+        },
     })
     .done(function (res) {
         console.log(res);

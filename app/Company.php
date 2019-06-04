@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Company extends Model
 {
@@ -44,5 +45,19 @@ class Company extends Model
         return route('companies.show', $this->slug);
     }
 
+    public function getImageUrlAttribute($value)
+    {
+        $image_url = '';;
+
+        if(! is_null($this->image) )
+        {
+            if(Storage::exists('public/img/'. $this->image)){
+                $image_path ='public/img/'. $this->image;
+
+                $image_url = Storage::disk('local')->url($image_path);
+            }
+        }
+        return $image_url;
+    }
 
 }

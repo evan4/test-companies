@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(array('prefix' => 'admin'), function(){
     Route::get('/company-edit', [
-        'as' => 'edit', 
+        'as' => 'company-edit', 
         'uses' => 'HomeController@editCompany'
     ]);
 
@@ -41,15 +41,25 @@ Route::group(array('prefix' => 'admin'), function(){
     ]);
     
 
-    Route::get('/deleteCompany', [
-        'as' => 'deleteCompany', 
-        'uses' => 'HomeController@deleteCompany'
+    Route::get('/company-delete', [
+        'as' => 'company-delete', 
+        'uses' => 'CompanyController@destroy'
     ]);
     
 
     Route::post('/company-update', [
-        'as' => 'update', 
-        'uses' => 'HomeController@updateCompany'
+        'as' => 'company-update', 
+        'uses' => 'CompanyController@update'
+    ]);
+
+    Route::get('/company-photo', [
+        'as' => 'company-photo', 
+        'uses' => 'CompanyController@getPhoto'
+    ]);
+
+    Route::post('/company-updatePhoto', [
+        'as' => 'company-updatePhoto', 
+        'uses' => 'CompanyController@updatePhoto'
     ]);
 
 });

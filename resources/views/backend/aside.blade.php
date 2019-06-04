@@ -6,9 +6,12 @@
         <a href="/admin/comments">Отзывы о компании</a>
     </li>
     <li class="list-group-item">
-        <a href="{{url('/admin/company-edit')}}">Добавить\Изменить описание</a>
+        <a href="/admin/company-edit">Добавить\Изменить описание</a>
     </li>
     <li class="list-group-item">
-        <a href="/admin/deleteCompany">Удалить профиль</a>
+        <a href="/admin/company-photo">Добавить\Изменить фото</a>
+    </li>
+    <li class="list-group-item">
+        <a href="/admin/company-delete">Удалить профиль</a>
     </li>
 </ul>

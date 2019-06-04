@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 require('./create_comment');
+require('./company_update');
+require('./companyPhoto_update');
 
 //window.Vue = require('vue');
 

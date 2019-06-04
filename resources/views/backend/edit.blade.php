@@ -7,7 +7,8 @@
             @include('backend.aside')
         </div>
         <div class="col-md-8">
-            <h1 class="text-center">{{ $company->name }}</h1>
+            <h1 class="text-center">Обновить данные</h1>
+            <p>{{ $company->name }}</p>
             <div class="alert collapse" role="alert" id="alert-company"></div>
             
             <form action="" 
@@ -17,19 +18,21 @@
                     <div class="form-group">
                         <label for="name">Название</label>
                         <input type="text" class="form-control" 
+                            name="name" 
                             id="name" value="{{$company->name}}"
-                            placeholder="Введите название">
+                            placeholder="Введите название" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" 
+                            name="email" 
                             id="email" value="{{$company->email}}"
-                            placeholder="Введите email">
+                            placeholder="Введите email" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Описание</label>
                         <textarea name="description" class="form-control" 
-                        id="description" cols="30" rows="3">{{$company->description}}</textarea>
+                        id="description" cols="30" rows="3" required>{{$company->description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Созранить</button>
             </form>

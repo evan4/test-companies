@@ -36767,7 +36767,11 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./create_comment */ "./resources/js/create_comment.js"); //window.Vue = require('vue');
+__webpack_require__(/*! ./create_comment */ "./resources/js/create_comment.js");
+
+__webpack_require__(/*! ./company_update */ "./resources/js/company_update.js");
+
+__webpack_require__(/*! ./companyPhoto_update */ "./resources/js/companyPhoto_update.js"); //window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -36850,6 +36854,80 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/companyPhoto_update.js":
+/*!*********************************************!*\
+  !*** ./resources/js/companyPhoto_update.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var alertResult = $('#alert-photo');
+$('#post-form').on('submit', function (e) {
+  e.preventDefault();
+  var data = new FormData();
+  data.append('image', $('#image')[0].files[0]);
+  console.log(data);
+  $.ajax({
+    url: '/admin/company-updatePhoto',
+    method: "POST",
+    contentType: false,
+    processData: false,
+    data: data,
+    headers: {
+      'X-CSRF-TOKEN': $("input[name='_token']").val()
+    }
+  }).done(function (res) {
+    console.log(res);
+    alertResult.removeClass('collapse').addClass('alert-success').text(res);
+    hideAlert();
+  }).fail(function (error) {
+    console.log(error);
+    alertResult.removeClass('collapse').addClass('alert-danger').text('Произошла ошибка. Попробуйте еще раз.');
+    hideAlert();
+  });
+});
+
+function hideAlert() {
+  setTimeout(function () {
+    alertResult.addClass('collapse').text();
+  }, 2000);
+}
+
+/***/ }),
+
+/***/ "./resources/js/company_update.js":
+/*!****************************************!*\
+  !*** ./resources/js/company_update.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var alertResult = $('#alert-company');
+$('#company-update').on('submit', function (e) {
+  e.preventDefault();
+  $.ajax({
+    url: '/admin/company-update',
+    method: "POST",
+    data: $(this).serializeArray()
+  }).done(function (res) {
+    console.log(res);
+    alertResult.removeClass('collapse').addClass('alert-success').text(res);
+    hideAlert();
+  }).fail(function (error) {
+    console.log(error);
+    alertResult.removeClass('collapse').addClass('alert-danger').text('Произошла ошибка. Попробуйте еще раз.');
+    hideAlert();
+  });
+});
+
+function hideAlert() {
+  setTimeout(function () {
+    alertResult.addClass('collapse').text();
+  }, 2000);
+}
+
+/***/ }),
+
 /***/ "./resources/js/create_comment.js":
 /*!****************************************!*\
   !*** ./resources/js/create_comment.js ***!
@@ -36872,21 +36950,18 @@ $('#form-comment').on('submit', function (e) {
     console.log(res);
     $('#form-comment')[0].reset();
     list.prepend("\n        <li class=\"list-group-item\">\n            <p>".concat(companyName, "</p>\n            ").concat(body, "\n        </li>"));
-    alertResult.removeClass('collapse').addClass('alert-success');
-    result.text(res);
+    alertResult.removeClass('collapse').addClass('alert-success').text(res);
     hideAlert();
   }).fail(function (error) {
     console.log(error);
-    alertResult.removeClass('collapse').addClass('alert-danger');
-    result.text('Произошла ошибка. Попробуйте еще раз.');
+    alertResult.removeClass('collapse').addClass('alert-danger').text('Произошла ошибка. Попробуйте еще раз.');
     hideAlert();
   });
 });
 
 function hideAlert() {
   setTimeout(function () {
-    alertResult.addClass('collapse');
-    result.text();
+    alertResult.addClass('collapse').text();
   }, 2000);
 }
 
