@@ -36861,12 +36861,13 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var alertResult = $('#alert-photo');
+var alertResult = $('#alert-photo'),
+    loading = $('.loading-photo'),
+    image = $('#image');
 $('#post-form').on('submit', function (e) {
   e.preventDefault();
   var data = new FormData();
-  data.append('image', $('#image')[0].files[0]);
-  console.log(data);
+  data.append('image', image[0].files[0]);
   $.ajax({
     url: '/admin/company-updatePhoto',
     method: "POST",
@@ -36875,13 +36876,19 @@ $('#post-form').on('submit', function (e) {
     data: data,
     headers: {
       'X-CSRF-TOKEN': $("input[name='_token']").val()
+    },
+    beforeSend: function beforeSend(xhr) {
+      loading.show();
     }
   }).done(function (res) {
     console.log(res);
-    alertResult.removeClass('collapse').addClass('alert-success').text(res);
+    $('#company-image').attr('src', "/storage/img/".concat(res.image));
+    loading.hide();
+    alertResult.removeClass('collapse').addClass('alert-success').text(res.text);
     hideAlert();
   }).fail(function (error) {
     console.log(error);
+    loading.hide();
     alertResult.removeClass('collapse').addClass('alert-danger').text('Произошла ошибка. Попробуйте еще раз.');
     hideAlert();
   });

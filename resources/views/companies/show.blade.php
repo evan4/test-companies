@@ -5,11 +5,11 @@
     
     <h1 class="text-center" id="company-name">{{ $company->name }}</h1>
     <p><strong>Число сотрудников</strong> {{$company->employees->count()}}</p>
-    <div class="mb-2">
+    <div class="mb-2 clearfix">
         <strong>Email:</strong> <a href="mailto:{{$company->email}}">{{$company->email}}</a>
         @if($company->image)
-            <img class="float-right img-thumbnail"
-                src="{{$company->image}}" 
+            <img class="float-right img-thumbnail company-image"
+                src="{{$company->image_url}}" 
                 alt="{{ $company->name }}">
         @endif
     </div>

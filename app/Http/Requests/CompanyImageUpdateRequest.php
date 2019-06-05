@@ -24,7 +24,7 @@ class CompanyImageUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'mimes:jpg,jpeg,png',
+            'image' => 'mimes:jpg,jpeg,png|max:2047',
         ];
     }
 }

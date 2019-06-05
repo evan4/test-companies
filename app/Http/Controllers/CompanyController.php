@@ -71,8 +71,10 @@ class CompanyController extends Controller
         $data = $this->handleRequest($request, $company->image);
         
         $company->update($data);
+        
+        $data['text'] = 'Данные успешно обновлены';
 
-        return 'Данные успешно обновлены';
+        return $data;
     }
 
     private function handleRequest($request, $old_image)
