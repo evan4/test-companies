@@ -11,7 +11,7 @@
 </div>
 
 <p>Число сотрудников {{$company->employees->count()}}</p>
-<div class="mb-2">
+<div class="mb-2 clearfix">
     Email: <a href="mailto:{{$company->email}}">{{$company->email}}</a>
     @if($company->image)
         <img class="float-right img-thumbnail company-image"

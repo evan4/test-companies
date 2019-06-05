@@ -12,12 +12,19 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'body',  'company_id',
+        'body', 'company_id', 'author',
     ];
 
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function getAuthorNameAttribute()
+    {
+        $company = Company::findOrFail($this->author);;
+        
+        return $company->name;
     }
 
 }

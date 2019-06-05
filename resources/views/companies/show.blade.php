@@ -63,8 +63,8 @@
         <ul class="list-group" id="comments-list">
             @foreach($comments as $comment)
             <li class="list-group-item">
-                <p>{{$comment->company->name}}</p>
-                {{$comment->body}}
+                <p>{{$comment->author_name}}</p>
+                <div>{{$comment->body}}</div>
             </li>
             @endforeach
         </ul>

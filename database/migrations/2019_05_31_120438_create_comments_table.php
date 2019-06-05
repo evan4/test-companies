@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->text('body');
             $table->unsignedInteger('company_id');
+            $table->unsignedInteger('author');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')

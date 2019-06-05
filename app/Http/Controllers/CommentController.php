@@ -16,7 +16,7 @@ class CommentController extends Controller
      */
     public function store(CommentStoreRequest $request)
     {
-        Comment::create($request->all());
+        Comment::create(array_merge($request->all(), ['author' => \Auth::id()]));
 
         return 'Your comment was created successfully!';
     }
