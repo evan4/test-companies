@@ -29,6 +29,11 @@ Route::group(array('prefix' => 'admin'), function(){
         'as' => 'employees', 
         'uses' => 'HomeController@showEmployees'
     ]);
+    
+    Route::delete('/employee-delete/{id}', [
+        'as' => 'employee-delete', 
+        'uses' => 'EmployeeController@destroy'
+    ]);
 
     Route::get('/comments', [
         'as' => 'comments', 

@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-
+@include('backend.partials.message') 
 <h1 class="text-center">{{ $company->name }}</h1>
 
 <h2 class="mt-2">Список сотрудников</h2>
 <table class="table table-hover">
     <thead>
         <tr>
-        <th scope="col">Имя</th>
-        <th scope="col">Должность</th>
-        <th scope="col">Зарплата</th>
+            <th>Имя</th>
+            <th>Должность</th>
+            <th>Зарплата</th>
+            <th>Зарплата</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,17 @@
                 </td>
                 <td class="w-33">{{ $emploee->position->name }}</td>
                 <td class="w-33">${{ $emploee->salary }}</td>
+                <td>
+                    <form action="{{ url('admin/employee-delete', ['id' => $emploee->id]) }}"
+                        class="text-center"
+                        method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-sm  btn-danger">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </tbody>
