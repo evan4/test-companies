@@ -50,7 +50,7 @@ class CompanyController extends Controller
 
     public function update(CompanyUpdateRequest $request)
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
         $data = $request->all();
         $company->update(array_merge($data, ['slug' => str_slug($data['name'])]));
 
@@ -59,19 +59,19 @@ class CompanyController extends Controller
 
     public function getPhoto()
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
 
         return view('backend.photoUpdate', compact('company') );
     }
 
     public function updatePhoto(CompanyImageUpdateRequest $request)
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
         
         $data = $this->handleRequest($request, $company->image);
         
         $company->update($data);
-        
+
         $data['text'] = 'Данные успешно обновлены';
 
         return $data;

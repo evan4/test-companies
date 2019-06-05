@@ -29,7 +29,19 @@ Route::group(array('prefix' => 'admin'), function(){
         'as' => 'employees', 
         'uses' => 'HomeController@showEmployees'
     ]);
+
+    Route::get('/employee/{id}', [
+        'as' => 'employee', 
+        'uses' => 'EmployeeController@edit'
+    ]);
+
+    Route::post('/employee-update', [
+        'as' => 'employee-update', 
+        'uses' => 'EmployeeController@update'
+    ]);
     
+    
+
     Route::delete('/employee-delete/{id}', [
         'as' => 'employee-delete', 
         'uses' => 'EmployeeController@destroy'

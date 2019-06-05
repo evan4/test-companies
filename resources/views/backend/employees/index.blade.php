@@ -19,7 +19,7 @@
             @foreach($emploees as $emploee)
             <tr>
                 <td class="w-33">
-                    <a href="">{{ $emploee->name }}</a>
+                    <a href="/admin/employee/{{ $emploee->id }}">{{ $emploee->name }}</a>
                 </td>
                 <td class="w-33">{{ $emploee->position->name }}</td>
                 <td class="w-33">${{ $emploee->salary }}</td>

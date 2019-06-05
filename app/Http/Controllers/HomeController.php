@@ -26,36 +26,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
 
         return view('home', compact('company'));
     }
 
     public function editCompany(Company $company)
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
         
         return view('backend.edit', compact('company'));
     }
 
-    public function updateCompany()
-    {
-        
-    }
-
     public function showEmployees()
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
 
         $emploees = Employee::with('position')->where('company_id', $company->id)
             ->latest()->paginate(5);
 
-        return view('backend.showEmployees', compact('company', 'emploees') );
+        return view('backend.employees.index', compact('company', 'emploees') );
     }
 
     public function showComments()
     {
-        $company = Company::find(\Auth::id());
+        $company = Company::findOrFail(\Auth::id());
 
         $comments = Comment::with('company')->where('company_id', $company->id)
             ->latest()->paginate(5);
