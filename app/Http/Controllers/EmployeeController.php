@@ -21,6 +21,20 @@ class EmployeeController extends Controller
         $this->middleware('auth');
     }
 
+    public function create()
+    {   
+        $positions = Position::all();
+
+        return view('backend.employees.create', compact('positions'));
+    }
+
+    public function store(EmployeeUpdateRequest $request)
+    {
+        Employee::create(array_merge($request->all(), ['company_id' => \Auth::id()]));
+
+        return redirect('/admin/employees')->with('message', 'Новый сотрудник был успешно добавлен!');
+    }
+
      /**
      * Show the form for editing the specified resource.
      *
@@ -42,7 +56,7 @@ class EmployeeController extends Controller
     
         $employee->update($data);
 
-        return redirect('/admin/employees')->with('message', 'Данные о пользователе успешно обновлены!');
+        return redirect('/admin/employees')->with('message', 'Данные о сотруднике успешно обновлены!');
     }
 
     public function destroy($id)

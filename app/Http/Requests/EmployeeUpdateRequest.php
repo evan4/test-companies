@@ -25,7 +25,7 @@ class EmployeeUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'salary' => 'required',
+            'salary' => 'required|numeric',
             'position_id' => 'required'
         ];
     }

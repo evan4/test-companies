@@ -5,12 +5,14 @@
 <h1 class="text-center">{{ $company->name }}</h1>
 
 <h2 class="mt-2">Список сотрудников</h2>
+<div class="pull-left mb-2">
+    <a href="{{ url('/admin/employee-create') }}" class="btn btn-primary">Добавить сотрудника <i class="fa fa-plus"></i></a>
+</div>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>Имя</th>
             <th>Должность</th>
-            <th>Зарплата</th>
             <th>Зарплата</th>
             <th></th>
         </tr>

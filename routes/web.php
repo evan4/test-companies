@@ -35,6 +35,16 @@ Route::group(array('prefix' => 'admin'), function(){
         'uses' => 'EmployeeController@edit'
     ]);
 
+    Route::get('/employee-create', [
+        'as' => 'employee-create', 
+        'uses' => 'EmployeeController@create'
+    ]);
+
+    Route::post('/employee-store', [
+        'as' => 'employee-store', 
+        'uses' => 'EmployeeController@store'
+    ]);
+
     Route::post('/employee-update', [
         'as' => 'employee-update', 
         'uses' => 'EmployeeController@update'
